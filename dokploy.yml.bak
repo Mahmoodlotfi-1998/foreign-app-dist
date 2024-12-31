@@ -1,0 +1,11 @@
+name: vue-app
+services:
+  web:
+    image: nginx:latest  # Use Nginx as the web server
+    ports:
+      - "8080:80"  # Map host port 8080 to container port 80
+    volumes:
+      - ./dist:/usr/share/nginx/html:ro  # Serve static files from the 'dist' folder
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
