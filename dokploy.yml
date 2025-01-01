@@ -1,11 +1,8 @@
-name: vue-app
+name: spa-app
 services:
   web:
-    image: nginx:latest  # Use Nginx as the web server
+    build_type: dockerfile
+    dockerfile_path: ./Dockerfile  # Path to the Dockerfile
+    context_path: .               # Context is the current directory
     ports:
-      - "7070:80"  # Map host port 8080 to container port 80
-    volumes:
-      - ./dist:/usr/share/nginx/html:ro  # Serve static files from the 'dist' folder
-    environment:
-      - NGINX_HOST=localhost
-      - NGINX_PORT=80
+      - "7070:80"                 # Map port 8080 on the host to port 80 in the container
